@@ -1,0 +1,66 @@
+{
+  "name": "electron-ava",
+  "version": "0.3.0",
+  "description": "Electron testing in AVA",
+  "license": "MIT",
+  "main": "cli.js",
+  "bin": "cli.js",
+  "author": "Wouter Van den Berg <woutervandberg@gmail.com>",
+  "dependencies": {
+    "arrify": "^1.0.1",
+    "ava": "^0.17.0",
+    "bluebird": "^3.4.6",
+    "currently-unhandled": "^0.4.1",
+    "electron": "^20.0.2",
+    "figures": "^2.0.0",
+    "has-flag": "^2.0.0",
+    "is-ci": "^1.0.10",
+    "meow": "^3.7.0",
+    "object-assign": "^4.1.0",
+    "pkg-conf": "^2.0.0",
+    "update-notifier": "^1.0.3"
+  },
+  "scripts": {
+    "test": "xo && node cli.js && node cli.js --renderer test/renderer.js"
+  },
+  "devDependencies": {
+    "xo": "^0.17.1"
+  },
+  "xo": {
+    "envs": [
+      "node"
+    ],
+    "rules": {
+      "no-use-extend-native/no-use-extend-native": "off",
+      "no-eq-null": "off",
+      "eqeqeq": [
+        "error",
+        "always",
+        {
+          "null": "ignore"
+        }
+      ]
+    },
+    "overrides": [
+      {
+        "files": [
+          "renderer/*.js",
+          "test/renderer.js"
+        ],
+        "envs": [
+          "node",
+          "browser"
+        ]
+      }
+    ]
+  },
+  "electron-ava": {
+    "files": [
+      "test/browser.js"
+    ],
+    "windowOptions": {
+      "title": "Test"
+    }
+  },
+  "repository": "git@github.com:vdbwouter/electron-ava.git"
+}
